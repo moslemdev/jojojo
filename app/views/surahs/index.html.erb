@@ -1,0 +1,29 @@
+<h1>Listing surahs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Memory</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surahs.each do |surah| %>
+      <tr>
+        <td><%= surah.name %></td>
+        <td><%= surah.memory %></td>
+        <td><%= link_to 'Show', surah %></td>
+        <td><%= link_to 'Edit', edit_surah_path(surah) %></td>
+        <td><%= link_to 'Destroy', surah, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Surah', new_surah_path %>

@@ -1,29 +1,33 @@
+<style>
+	.bar { 
+		position: absolute;
+		display: inline-block;	
+		background-color: #efe;
+		z-index: -10;
+		top: 0px;
+		left: 0px;
+		height: 100%;
+	}
+</style>
 <h1>Listing surahs</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Memory</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @surahs.each do |surah| %>
       <tr>
-        <td><%= surah.name %></td>
-        <td><%= surah.memory %></td>
-        <td><%= link_to 'Show', surah %></td>
-        <td><%= link_to 'Edit', edit_surah_path(surah) %></td>
-        <td><%= link_to 'Destroy', surah, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="col-md-3"><%= link_to surah.name, surah %></td>
+        <td class="col-md-9" style="position: relative;">
+        	<%= surah.memory %>
+        	<span class="bar" style="width: <%= surah.memory %>%"></span>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Surah', new_surah_path %>
